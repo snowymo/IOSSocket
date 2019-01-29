@@ -18,20 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyv-eE-86p">
-                                <rect key="frame" x="153" y="351" width="68" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wd1-i9-ST8">
+                                <rect key="frame" x="164" y="327" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TCP Send"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="SendClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nf1-rw-yq1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4op-JH-lWc">
-                                <rect key="frame" x="141" y="263" width="70" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="UDP Send"/>
-                                <connections>
-                                    <action selector="UDPSend:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Ff-or-5ig"/>
+                                    <action selector="SendClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nqm-wT-mbp"/>
                                 </connections>
                             </button>
                         </subviews>
