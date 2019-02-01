@@ -32,27 +32,35 @@ class ViewController: UIViewController {
         tcpClient = TCPClient(address: host, port: Int32(port))
         udpClient = UDPClient(address: host, port: Int32(port))
     }
-    @IBAction func IPChanged(_ sender: UITextField) {
+    @IBAction func IPValueChanged(_ sender: UITextField) {
         if self.curProtocol == "udp"{
             self.udpClient = UDPClient(address: sender.text!, port: Int32(self.port))
+            
         }
         else{
             self.tcpClient = TCPClient(address: sender.text!, port: Int32(self.port))
         }
         print("Connected to host \(sender.text ?? "none")")
     }
+
     
     override func viewDidAppear(_ animated: Bool) {
         motionManager.gyroUpdateInterval = interval
         motionManager.startGyroUpdates(to: OperationQueue.current!) { (data, error) in
             if let mydata = data{
-                print( mydata.rotationRate)
+                //print( mydata.rotationRate)
                 
                 if self.curSending{
                     if self.curProtocol == "udp"{
+                        if self.udpClient?.address != self.TextIPAddress.text{
+                            self.udpClient = UDPClient(address: self.TextIPAddress.text!, port: Int32(self.port))
+                        }
                         self.sendRequest(imu: mydata, using: self.udpClient!)
                     }
                     else{
+                        if self.tcpClient?.address != self.TextIPAddress.text{
+                            self.tcpClient = TCPClient(address: self.TextIPAddress.text!, port: Int32(self.port))
+                        }
                         self.sendRequest(imu: mydata, using: self.tcpClient!)
                     }
                 }
