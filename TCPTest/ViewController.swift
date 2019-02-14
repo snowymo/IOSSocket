@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         tcpClient = TCPClient(address: TextIPAddress.text!, port: Int32(port))
         udpClient = UDPClient(address: TextIPAddress.text!, port: Int32(port))
         prepareSongAndSession()
+        songPlayer.setVolume(0, fadeDuration: 0)
         songPlayer.play()
     }
     @IBAction func IPValueChanged(_ sender: UITextField) {
