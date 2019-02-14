@@ -1,16 +1,20 @@
 PODS:
   - SwiftSocket (2.0.2)
+  - SwiftySound (1.0.0)
 
 DEPENDENCIES:
   - SwiftSocket
+  - SwiftySound
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - SwiftSocket
+    - SwiftySound
 
 SPEC CHECKSUMS:
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
+  SwiftySound: b9c3370956fd4ed65ed79d45563070077a50a2cd
 
-PODFILE CHECKSUM: 50d4a20b347632a2678fef79e5ce72323547c0ac
+PODFILE CHECKSUM: ab2b552ee4cae59813f6dc792149a0749c548f5b
 
 COCOAPODS: 1.5.3

@@ -7,4 +7,6 @@ target 'TCPTest' do
 
   # Pods for TCPTest
   pod 'SwiftSocket'
+  # Pods for Audio
+  pod 'SwiftySound'
 end

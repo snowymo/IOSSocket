@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1FD7861B2214CD5B00057AFE /* piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1FD7861A2214CD5B00057AFE /* piano.wav */; };
 		1FEFF4AA2200F4A200C4C4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */; };
 		1FEFF4AC2200F4A200C4C4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */; };
 		1FEFF4AF2200F4A200C4C4C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEFF4AD2200F4A200C4C4C1 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1FD7861A2214CD5B00057AFE /* piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = piano.wav; sourceTree = "<group>"; };
 		1FEFF4A62200F4A200C4C4C1 /* TCPTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCPTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		1FEFF4A82200F4A200C4C4C1 /* TCPTest */ = {
 			isa = PBXGroup;
 			children = (
+				1FD7861A2214CD5B00057AFE /* piano.wav */,
 				1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */,
 				1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */,
 				1FEFF4AD2200F4A200C4C4C1 /* Main.storyboard */,
@@ -122,6 +125,11 @@
 				TargetAttributes = {
 					1FEFF4A52200F4A200C4C4C1 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -148,6 +156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD7861B2214CD5B00057AFE /* piano.wav in Resources */,
 				1FEFF4B42200F4A300C4C4C1 /* LaunchScreen.storyboard in Resources */,
 				1FEFF4B12200F4A300C4C4C1 /* Assets.xcassets in Resources */,
 				1FEFF4AF2200F4A200C4C4C1 /* Main.storyboard in Resources */,
@@ -167,12 +176,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TCPTest/Pods-TCPTest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftySound/SwiftySound.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftySound.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

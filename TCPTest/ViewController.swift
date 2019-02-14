@@ -9,7 +9,10 @@
 import UIKit
 import SwiftSocket
 import CoreMotion
-
+import SwiftySound
+import AVFoundation
+import MediaPlayer
+import AVKit
 
 class ViewController: UIViewController {
     
@@ -24,6 +27,10 @@ class ViewController: UIViewController {
     var curProtocol = "udp"
     var curSending = false
     
+    //private var backgroundSound: Sound?
+    var audioPlayer = AVAudioPlayer()
+    //var player: AVPlayer?
+    
     var motionManager = CMMotionManager()
 
     override func viewDidLoad() {
@@ -31,7 +38,28 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         tcpClient = TCPClient(address: host, port: Int32(port))
         udpClient = UDPClient(address: host, port: Int32(port))
+        //
+        //Sound.play(file: "piano", fileExtension: "wav", numberOfLoops: -1)
+        //PlayAudio()
+        //playVideo()
+        prepareSongAndSession()
+        audioPlayer.play()
     }
+    func PlayAudio(){
+        
+        do {
+            if let fileURL = Bundle.main.path(forResource: "piano", ofType: "wav") {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: fileURL))
+            } else {
+                print("No file with specified name exists")
+            }
+        } catch let error {
+            print("Can't play the audio file failed with an error \(error.localizedDescription)")
+        }
+        audioPlayer.play()
+        audioPlayer.numberOfLoops = -1
+    }
+    
     @IBAction func IPValueChanged(_ sender: UITextField) {
         if self.curProtocol == "udp"{
             self.udpClient = UDPClient(address: sender.text!, port: Int32(self.port))
@@ -41,6 +69,10 @@ class ViewController: UIViewController {
             self.tcpClient = TCPClient(address: sender.text!, port: Int32(self.port))
         }
         print("Connected to host \(sender.text ?? "none")")
+    }
+    
+    func GetLastGyro() -> CMGyroData{
+        return motionManager.gyroData!
     }
 
     
@@ -159,19 +191,19 @@ class ViewController: UIViewController {
     }
     
     private func sendRequest(imu: CMGyroData, using client: UDPClient){
-        appendToTextField(string: "Sending imu ... ")
+        //appendToTextField(string: "Sending imu ... ")
         let arrayx = toByteArray(imu.rotationRate.x)
         let arrayy = toByteArray(imu.rotationRate.y)
         let arrayz = toByteArray(imu.rotationRate.z)
         let arrayt = toByteArray(imu.timestamp)
         let arrays = arrayx + arrayy + arrayz + arrayt
         
-        switch client.send(data: arrays) {
-        case .success:
-            print("Sending successfully")
-        case .failure(let error):
-            print(String(describing: error))
-        }
+//        switch client.send(data: arrays) {
+//        case .success:
+//            print("Sending successfully")
+//        case .failure(let error):
+//            print(String(describing: error))
+//        }
     }
     
 //    private func readResponse(from client: UDPClient) -> String? {
@@ -185,6 +217,73 @@ class ViewController: UIViewController {
         print(string)
         //textView.text = textView.text.appending("\n\(string)")
     }
+//    func playVideo() {
+//        guard let url = URL(string: "https://devimages.apple.com.edgekey.net/samplecode/avfoundationMedia/AVFoundationQueuePlayer_HLS2/master.m3u8") else {
+//            return
+//        }
+//
+//        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
+//        player = AVPlayer(url: url)
+//
+//        // Create a new AVPlayerViewController and pass it a reference to the player.
+//        let controller = AVPlayerViewController()
+//        controller.player = player
+//
+//        // Modally present the player and call the player's play() method when complete.
+//        present(controller, animated: true) {
+//            self.player!.play()
+//        }
+//    }
     
+    //
+//    func setupRemoteTransportControls() {
+//
+//        // Get the shared MPRemoteCommandCenter
+//        let commandCenter = MPRemoteCommandCenter.shared()
+//
+//        // Add handler for Play Command
+//        commandCenter.playCommand.addTarget { [unowned self] event in
+//            if self.player!.rate == 0.0 {
+//                self.player!.play()
+//                return .success
+//            }
+//            return .commandFailed
+//        }
+//
+//        // Add handler for Pause Command
+//        commandCenter.pauseCommand.addTarget { [unowned self] event in
+//            if self.player!.rate == 1.0 {
+//                self.player!.pause()
+//                return .success
+//            }
+//            return .commandFailed
+//        }
+//    }
+    
+    func prepareSongAndSession() {
+        
+        do {
+            //7 - Insert the song from our Bundle into our AVAudioPlayer
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "piano", ofType: "wav")!))
+            //8 - Prepare the song to be played
+            audioPlayer.prepareToPlay()
+            
+            //9 - Create an audio session
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                //10 - Set our session category to playback music
+                //try audioSession.setCategory(AVAudioSession.Category.playback)
+                try audioSession.setCategory(.playback, mode: .default)
+                try audioSession.setActive(true)
+                //11 -
+            } catch let sessionError {
+                
+                print(sessionError)
+            }
+            //12 -
+        } catch let songPlayerError {
+            print(songPlayerError)
+        }
+    }
 }
 
