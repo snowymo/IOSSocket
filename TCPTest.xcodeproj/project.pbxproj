@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F51B056221556250018762B /* piano.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F51B055221556250018762B /* piano.wav */; };
 		1FEFF4AA2200F4A200C4C4C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */; };
 		1FEFF4AC2200F4A200C4C4C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */; };
 		1FEFF4AF2200F4A200C4C4C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FEFF4AD2200F4A200C4C4C1 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F51B055221556250018762B /* piano.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = piano.wav; sourceTree = "<group>"; };
 		1FEFF4A62200F4A200C4C4C1 /* TCPTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCPTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		1FEFF4A82200F4A200C4C4C1 /* TCPTest */ = {
 			isa = PBXGroup;
 			children = (
+				1F51B055221556250018762B /* piano.wav */,
 				1FEFF4A92200F4A200C4C4C1 /* AppDelegate.swift */,
 				1FEFF4AB2200F4A200C4C4C1 /* ViewController.swift */,
 				1FEFF4AD2200F4A200C4C4C1 /* Main.storyboard */,
@@ -153,6 +156,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F51B056221556250018762B /* piano.wav in Resources */,
 				1FEFF4B42200F4A300C4C4C1 /* LaunchScreen.storyboard in Resources */,
 				1FEFF4B12200F4A300C4C4C1 /* Assets.xcassets in Resources */,
 				1FEFF4AF2200F4A200C4C4C1 /* Main.storyboard in Resources */,
