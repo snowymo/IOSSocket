@@ -9,11 +9,11 @@
 import UIKit
 import SwiftSocket
 import CoreMotion
-
+import AVFoundation
 
 class ViewController: UIViewController {
     
-    let host = "10.19.247.30"
+    //let host = "10.19.247.30"
     let port = 12345
     var tcpClient: TCPClient?
     var udpClient: UDPClient?
@@ -25,12 +25,16 @@ class ViewController: UIViewController {
     var curSending = false
     
     var motionManager = CMMotionManager()
+    
+    var songPlayer = AVAudioPlayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tcpClient = TCPClient(address: host, port: Int32(port))
-        udpClient = UDPClient(address: host, port: Int32(port))
+        tcpClient = TCPClient(address: TextIPAddress.text!, port: Int32(port))
+        udpClient = UDPClient(address: TextIPAddress.text!, port: Int32(port))
+        prepareSongAndSession()
+        songPlayer.play()
     }
     @IBAction func IPValueChanged(_ sender: UITextField) {
         if self.curProtocol == "udp"{
@@ -186,5 +190,29 @@ class ViewController: UIViewController {
         //textView.text = textView.text.appending("\n\(string)")
     }
     
+    func prepareSongAndSession() {
+        
+        do {
+            //7 - Insert the song from our Bundle into our AVAudioPlayer
+            songPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "piano", ofType: "wav")!))
+            //8 - Prepare the song to be played
+            songPlayer.prepareToPlay()
+            
+            //9 - Create an audio session
+            let audioSession = AVAudioSession.sharedInstance()
+            do {
+                //10 - Set our session category to playback music
+                //try audioSession.setCategory(AVAudioSession.Category.playback)
+                try audioSession.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [AVAudioSession.CategoryOptions.mixWithOthers])
+                //11 -
+            } catch let sessionError {
+                
+                print(sessionError)
+            }
+            //12 -
+        } catch let songPlayerError {
+            print(songPlayerError)
+        }
+    }
 }
 
